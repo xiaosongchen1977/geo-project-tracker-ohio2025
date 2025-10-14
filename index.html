@@ -165,24 +165,62 @@
             border-bottom-color: #1a6b1a;
         }
         .schedule-table {
-            width: 80%;
+            width: 100%;
             border-collapse: collapse;
             margin: 15px auto;
-            font-size: 14px;
+            font-size: 12px;
+            background-color: #f8fff8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(13, 61, 13, 0.1);
         }
         .schedule-table th, .schedule-table td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            padding: 6px 4px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
         }
         .schedule-table th {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #0f4f0f, #1a6b1a);
+            color: white;
             font-weight: bold;
-            color: #2c3e50;
-            font-size: 13px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .schedule-table td {
-            font-size: 12px;
+            font-size: 10px;
+            background-color: white;
+        }
+        .schedule-table tr:nth-child(even) td {
+            background-color: #f8fff8;
+        }
+        .schedule-table tr:hover td {
+            background-color: #e8f5e8;
+        }
+        .schedule-table tr:last-child td {
+            background-color: #f0f0f0;
+            color: #333;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .schedule-table tr:last-child:hover td {
+            background-color: #e8e8e8;
+        }
+        /* Shade only percentage columns */
+        .schedule-table td:nth-child(7),  /* Duration % */
+        .schedule-table td:nth-child(10), /* Income % */
+        .schedule-table td:nth-child(13), /* Spent Cost % */
+        .schedule-table td:nth-child(14), /* Profit % */
+        .schedule-table td:nth-child(17) { /* Applied Labor % */
+            background-color: #e8f5e8 !important;
+        }
+        .schedule-table tr:nth-child(even) td:nth-child(7), 
+        .schedule-table tr:nth-child(even) td:nth-child(10), 
+        .schedule-table tr:nth-child(even) td:nth-child(13), 
+        .schedule-table tr:nth-child(even) td:nth-child(14), 
+        .schedule-table tr:nth-child(even) td:nth-child(17) {
+            background-color: #d4f0d4 !important;
         }
         .status-dot {
             display: inline-block;
@@ -339,7 +377,7 @@
                         <div class="status-text-green">Expected heating start date:</div>
                     </div>
                     <div class="status-item">
-                        <div class="status-date">10/14/2025</div>
+                        <div class="status-date">11/03/2025</div>
                     </div>
                 </div>
                 <div class="status-frame">
@@ -369,105 +407,189 @@
 
         <!-- Schedule Tracking Section -->
         <div class="section">
-            <h2>Schedule Tracking</h2>
+            <h2>Summary</h2>
             <table class="schedule-table">
                 <thead>
                     <tr>
                         <th>Task ID</th>
                         <th>Task Name</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Duration</th>
-                        <th>Contract Start Date</th>
-                        <th>Contract End Date</th>
-                        <th>Contract Duration</th>
                         <th>Status</th>
+                        <th>Schedule</th>
+                        <th>Planned Duration</th>
+                        <th>Actual Duration</th>
+                        <th>Duration %</th>
+                        <th>Invoice</th>
+                        <th>Income Received</th>
+                        <th>Income %</th>
+                        <th>Planned Spend</th>
+                        <th>Actual Spend</th>
+                        <th>Spent Cost %</th>
+                        <th>Profit %</th>
+                        <th>Planned Labor Days</th>
+                        <th>Actual Labor Days</th>
+                        <th>Applied Labor %</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr style="">
                         <td>100</td>
                         <td>Design and Plans For Thermal Remediation</td>
-                        <td>04/01/2025</td>
-                        <td>05/30/2025</td>
-                        <td>44</td>
-                        <td>05/01/2025</td>
-                        <td>07/07/2025</td>
-                        <td>48</td>
                         <td><span class="status-dot status-complete"></span>Complete</td>
+                        <td>04/01/25 - 05/30/25</td>
+                        <td>48</td>
+                        <td>44</td>
+                        <td>92%</td>
+                        <td>$105,054</td>
+                        <td>$105,054</td>
+                        <td>100%</td>
+                        <td>$77,818</td>
+                        <td>$24,974</td>
+                        <td>32%</td>
+                        <td>321%</td>
+                        <td>138</td>
+                        <td>31</td>
+                        <td>23%</td>
                     </tr>
 
-                    <tr>
+                    <tr style="">
                         <td>200</td>
                         <td>Site Preparation & Mobilization Prep</td>
-                        <td>06/01/2025</td>
-                        <td>08/22/2025</td>
-                        <td>60</td>
-                        <td>06/01/2025</td>
-                        <td>08/08/2025</td>
-                        <td>50</td>
                         <td><span class="status-dot status-complete"></span>Complete</td>
+                        <td>06/01/25 - 08/22/25</td>
+                        <td>50</td>
+                        <td>60</td>
+                        <td><span style="color: red;">120%</span></td>
+                        <td>$344,279</td>
+                        <td>$284,997</td>
+                        <td>83%</td>
+                        <td>$357,757</td>
+                        <td>$227,316</td>
+                        <td>64%</td>
+                        <td>25%</td>
+                        <td>20</td>
+                        <td>14</td>
+                        <td>70%</td>
                     </tr>
 
-                    <tr>
+                    <tr style="">
                         <td>300</td>
                         <td>Drilling and Well Installation</td>
-                        <td>07/21/2025</td>
-                        <td>09/01/2025</td>
-                        <td>35</td>
-                        <td>07/07/2025</td>
-                        <td>08/22/2025</td>
-                        <td>35</td>
                         <td><span class="status-dot status-complete"></span>Complete</td>
+                        <td>07/21/25 - 09/01/25</td>
+                        <td>35</td>
+                        <td>31</td>
+                        <td>89%</td>
+                        <td>$592,513</td>
+                        <td>$272,151</td>
+                        <td>46%</td>
+                        <td>$498,552</td>
+                        <td>$415,168</td>
+                        <td>83%</td>
+                        <td><span style="color: red;">-34%</span></td>
+                        <td>91</td>
+                        <td>132</td>
+                        <td><span style="color: red;">145%</span></td>
                     </tr>
 
-                    <tr>
+                    <tr style="font-weight: bold;">
                         <td>400</td>
                         <td>Construction and Installation</td>
-                        <td>09/02/2025</td>
-                        <td>10/13/2025</td>
-                        <td>30</td>
-                        <td>08/25/2025</td>
-                        <td>10/03/2025</td>
-                        <td>30</td>
                         <td><span class="status-dot status-in-progress"></span>In Progress</td>
+                        <td>09/02/25 - 10/31/25</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td>103%</td>
+                        <td>$279,193</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>$218,009</td>
+                        <td>$101,315</td>
+                        <td>46%</td>
+                        <td><span style="color: red;">-100%</span></td>
+                        <td>195</td>
+                        <td>117</td>
+                        <td>60%</td>
                     </tr>
 
-                    <tr>
+                    <tr style="">
                         <td>500</td>
                         <td>Operation and Maintenance</td>
-                        <td>10/14/2025</td>
-                        <td>05/01/2026</td>
-                        <td>200</td>
-                        <td>10/06/2025</td>
-                        <td>04/23/2026</td>
-                        <td>200</td>
                         <td><span class="status-dot status-pending"></span>Pending</td>
+                        <td>11/03/25 - 05/21/26</td>
+                        <td>200</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>$648,306</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>$437,461</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>537</td>
+                        <td>0</td>
+                        <td>N/A</td>
                     </tr>
 
-                    <tr>
+                    <tr style="">
                         <td>600</td>
                         <td>Demobilization</td>
-                        <td>05/04/2026</td>
-                        <td>05/25/2026</td>
-                        <td>16</td>
-                        <td>04/24/2026</td>
-                        <td>05/15/2026</td>
-                        <td>16</td>
                         <td><span class="status-dot status-pending"></span>Pending</td>
+                        <td>05/22/26 - 06/12/26</td>
+                        <td>16</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>$278,872</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>$189,445</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>114</td>
+                        <td>0</td>
+                        <td>N/A</td>
                     </tr>
 
-                    <tr>
+                    <tr style="">
                         <td>700</td>
                         <td>Reporting</td>
-                        <td>05/04/2026</td>
-                        <td>06/26/2026</td>
-                        <td>40</td>
-                        <td>04/24/2026</td>
-                        <td>06/18/2026</td>
-                        <td>40</td>
                         <td><span class="status-dot status-pending"></span>Pending</td>
+                        <td>05/22/26 - 07/16/26</td>
+                        <td>40</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>$46,150</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>$34,185</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>66</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                    </tr>
+
+                    <tr style="font-weight: bold;">
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td></td>
+                        <td>04/01/25 - 07/16/26</td>
+                        <td>471</td>
+                        <td>196</td>
+                        <td>42%</td>
+                        <td>$2,294,368</td>
+                        <td>$662,202</td>
+                        <td>29%</td>
+                        <td>$1,813,227</td>
+                        <td>$768,774</td>
+                        <td>42%</td>
+                        <td><span style="color: red;">-14%</span></td>
+                        <td>1161</td>
+                        <td>294</td>
+                        <td>25%</td>
                     </tr>
 
                 </tbody>
@@ -528,6 +650,7 @@
                 <a href="quickbook_summary.xlsx" class="download-btn" download="QuickBook_Summary.xlsx">📊 QuickBook Summary</a>
                 <a href="cost_tracking_summary.xlsx" class="download-btn" download="Cost_Tracking_Summary.xlsx">📈 Cost Tracking Summary</a>
                 <a href="labor_hour_summary.xlsx" class="download-btn" download="Labor_Hour_Summary.xlsx">⏰ Labor Hour Summary</a>
+                <a href="Ohio Hospital Project Cost Tracking Report.docx" class="download-btn" download="Ohio_Hospital_Project_Cost_Tracking_Report.docx">📄 Word Report</a>
             </div>
         </div>
 
